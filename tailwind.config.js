@@ -17,6 +17,7 @@ export const theme = {
     ...colors,
     primary: purple,
     secondary: pink,
-  }
+
+  },
 };
 export const plugins = [];

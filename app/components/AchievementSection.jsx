@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import dynamic from 'next/dynamic';
+import { motion } from "framer-motion";
 
 const AnimatedNumbers = dynamic(
     () => {
@@ -19,7 +20,7 @@ const achievementsList = [
     {
         prefix: "~",
         metric: "Users",
-        value: "100,000",
+        value: "100",
     },
 
     {
@@ -40,14 +41,19 @@ const AchievementSection = () => {
             {
                 achievementsList.map((achievement, index) => {
                     return (
-                        <div key={index} className='flex flex-col items-center justify-center mx-4 my-4 sm:my-0'>
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0 }} 
+                            animate={{ opacity: 1, scale: 1  }} 
+                            transition={{ duration: 0.5 }} 
+                            key={index} 
+                            className='flex flex-col items-center justify-center mx-4 my-4 sm:my-0'>
                             <h2 className='text-white text-4xl font-bold flex flex-row'>
-                                {achievement.prefix}
+                                {/* {achievement.prefix}
                                 <AnimatedNumbers
                                     includeComma
                                     animateToNumber={parseInt(achievement.value)}
                                     locale="en-US"
-                                    className="text-white text-4xl font-bold"
+                                    // className="text-white text-4xl font-bold"
                                     configs={(_, index) => {
                                         return {
                                             mass: 1,
@@ -56,10 +62,11 @@ const AchievementSection = () => {
                                         };
                                     }}
                                 />
-                                {achievement.postfix}
+                                {achievement.postfix} */}
+                                {achievement.value}
                             </h2>
                             <p className='text-[#ADB7BE] text-base'>{achievement.metric}</p>
-                        </div>
+                        </motion.div>
                     );
                 })
             }
